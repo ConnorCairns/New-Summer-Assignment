@@ -41,6 +41,7 @@ def main():
 
 def login():
     global finalID
+    global username
     username = enterbox(msg="Please enter your username")
     c.execute("SELECT ID FROM student WHERE userName=?", (username,))
     rows = c.fetchall()
@@ -59,15 +60,20 @@ def session():
         x = rows[0]
         x = list(map(int, x))
         y = x[0]
-        session = y +1
+        session = y + 1
 
 def loop():
     for x in range(0, 10):
         main()
 
     else:
+        c.execute("SELECT question,answer FROM results WHERE sessionID=?", (session,))
+        rows = c.fetchall()
+        for eachRow in rows:
+            #print("\nquestion:{0} \nanswer:{1}".format(eachRow[0],eachRow[1]))
+            msgbox(msg="\nquestion:{0} \nanswer:{1}".format(eachRow[0],eachRow[1]))
         percent = (int(correctQ) / 10)*100
-        msgbox(percent)
+        msgbox(msg="You are logged in as " + str(username) + "\nYou got " + str(correctQ) + "/10 \nThat is "+ str(percent) + "%")
 
 
 session()
