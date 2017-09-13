@@ -28,15 +28,15 @@ def main():
         correctQ += 1
         msgbox(msg="Correct!")
         correct = True
-        c.execute("""INSERT INTO results (question,answer,correct,studentID) 
-                    VALUES(?,?,?,?)""",(words,userInput,correct,finalID))
+        c.execute("""INSERT INTO results (question,answer,correct,sessionID,studentID) 
+                    VALUES(?,?,?,?,?)""",(words,userInput,correct,session,finalID))
         conn.commit()
     else:
         incorrectQ += 1
         msgbox(msg="Incorrect!")
         correct = False
-        c.execute("""INSERT INTO results (question,answer,correct,studentID) 
-                    VALUES(?,?,?,?)""",(words,userInput,correct,finalID))
+        c.execute("""INSERT INTO results (question,answer,correct,sessionID,studentID) 
+                    VALUES(?,?,?,?,?)""",(words,userInput,correct,session,finalID))
         conn.commit()
 
 def login():
@@ -49,7 +49,19 @@ def login():
     finalID = studentID[0]
     loop()
 
-
+def session():
+    global session
+    c.execute("SELECT sessionID FROM results ORDER BY ID DESC LIMIT 1")
+    rows = c.fetchall()
+    if rows == None:
+        session = 1
+        print(session)
+    else:
+        x = rows[0]
+        x = list(map(int, x))
+        y = x[0]
+        session = y +1
+        print(session)
 def loop():
     for x in range(0, 10):
         main()
@@ -59,7 +71,7 @@ def loop():
         msgbox(percent)
 
 
-
+session()
 login()
 
 

@@ -14,6 +14,7 @@ c.execute("""CREATE TABLE results
               question TEXT NOT NULL,
               answer TEXT NOT NULL,
               correct BOOLEAN NOT NULL,
+              sessionID INTEGER NOT NULL,
               studentID INTEGER NOT NULL,
               FOREIGN KEY(studentID) REFERENCES student(ID) 
               PRIMARY KEY(ID))""")

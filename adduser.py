@@ -7,7 +7,7 @@ def addItem():
     userName = input("Please enter your username: ")
     c.execute("""INSERT INTO student 
                 (name,userName)values(?,?)""",
-                (name,userName,)) #putting items into the database
-    conn.commit() #commiting the changes
+                (name,userName,))
+    conn.commit()
 
 addItem()
