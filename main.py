@@ -55,13 +55,12 @@ def session():
     rows = c.fetchall()
     if rows == None:
         session = 1
-        print(session)
     else:
         x = rows[0]
         x = list(map(int, x))
         y = x[0]
         session = y +1
-        print(session)
+
 def loop():
     for x in range(0, 10):
         main()
