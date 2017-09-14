@@ -67,11 +67,6 @@ def loop():
         main()
 
     else:
-        c.execute("SELECT question,answer FROM results WHERE sessionID=?", (session,))
-        rows = c.fetchall()
-        for eachRow in rows:
-            #print("\nquestion:{0} \nanswer:{1}".format(eachRow[0],eachRow[1]))
-            msgbox(msg="\nquestion:{0} \nanswer:{1}".format(eachRow[0],eachRow[1]))
         percent = (int(correctQ) / 10)*100
         msgbox(msg="You are logged in as " + str(username) + "\nYou got " + str(correctQ) + "/10 \nThat is "+ str(percent) + "%")
 
