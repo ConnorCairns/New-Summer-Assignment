@@ -1,6 +1,6 @@
 # New-Summer-Assignment
 
-My top quality summer assignment that 100% was not left till last minute
+My top quality summer assignment that 100% was not left till last minute and done on a very small time limit
 
 ## How to run
 
